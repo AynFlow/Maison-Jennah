@@ -1,0 +1,718 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Maison Noura — A Study in Softness</title>
+<meta name="description" content="Maison Noura — modest fashion shaped by movement, comfort and quiet confidence. Premium hijabs, abayas and essentials." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          bg:               '#F0E8DA',
+          'bg-alt':         '#E5DBC9',
+          'bg-light':       '#F7F1E6',
+          'bg-dark':        '#2C2520',
+          'bg-dark-2':      '#3D2E25',
+          ink:              '#2C2520',
+          'ink-muted':      '#6B5D52',
+          'ink-light':      '#F0E8DA',
+          'ink-light-muted':'#C9B8A4',
+          accent:           '#8B6F5C',
+          line:             '#D9CFC1',
+          'line-dark':      '#5A4A3D',
+        },
+        fontFamily: {
+          serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+          sans:  ['Inter', 'system-ui', 'sans-serif'],
+        },
+        letterSpacing: {
+          'logo': '0.4em',
+          'overline': '0.2em',
+        },
+      },
+    },
+  };
+</script>
+<style>
+  html, body { background:#F0E8DA; color:#2C2520; }
+  body { font-family: Inter, system-ui, sans-serif; -webkit-font-smoothing:antialiased; }
+  .font-serif { font-family: "Cormorant Garamond", Georgia, serif; font-weight:400; }
+  .container-x { max-width: 1320px; margin-inline:auto; padding-inline: clamp(16px, 4vw, 64px); }
+
+  /* Reveal-on-scroll */
+  .reveal { opacity:0; transform: translateY(20px); transition: opacity 800ms ease-out, transform 800ms ease-out; }
+  .reveal.is-visible { opacity:1; transform: none; }
+
+  /* Animated underline links */
+  .ulink { position:relative; display:inline-block; padding-bottom:2px; }
+  .ulink::after {
+    content:""; position:absolute; left:0; bottom:0; height:1px; width:100%;
+    background: currentColor; transform: scaleX(1); transform-origin: left; transition: transform 300ms ease;
+  }
+  .ulink:hover::after { transform: scaleX(0); transform-origin: right; }
+
+  .ulink-grow { position:relative; display:inline-block; padding-bottom:2px; }
+  .ulink-grow::after {
+    content:""; position:absolute; left:0; bottom:0; height:1px; width:100%;
+    background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform 300ms ease;
+  }
+  .ulink-grow:hover::after { transform: scaleX(1); }
+
+  /* Card hover scale */
+  .card-img { transition: transform 600ms ease-out; }
+  .card:hover .card-img { transform: scale(1.04); }
+
+  /* Bento grids */
+  .bento-sig {
+    display:grid; gap: 0.75rem;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 1024px) {
+    .bento-sig {
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: minmax(280px, 1fr) minmax(180px, 1fr);
+    }
+    .bento-sig > .sig-1 { grid-column: 1 / 2; grid-row: 1 / 3; }
+    .bento-sig > .sig-2 { grid-column: 2 / 3; grid-row: 1 / 2; }
+    .bento-sig > .sig-3 { grid-column: 3 / 4; grid-row: 1 / 2; }
+    .bento-sig > .sig-4 { grid-column: 2 / 4; grid-row: 2 / 3; }
+  }
+
+  .bento-look {
+    display:grid; gap: 0.75rem;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 1024px) {
+    .bento-look {
+      grid-template-columns: 2fr 1fr 2fr;
+      grid-template-rows: minmax(180px, 1fr) minmax(180px, 1fr);
+    }
+    .bento-look > .look-1 { grid-column: 1 / 2; grid-row: 1 / 3; }
+    .bento-look > .look-2 { grid-column: 2 / 3; grid-row: 1 / 2; }
+    .bento-look > .look-3 { grid-column: 2 / 3; grid-row: 2 / 3; }
+    .bento-look > .look-4 { grid-column: 3 / 4; grid-row: 1 / 3; }
+  }
+
+  /* Mobile bento card ratio */
+  @media (max-width: 1023.98px) {
+    .bento-sig .card, .bento-look .card { aspect-ratio: 4 / 3; }
+  }
+
+  /* Hero column min heights */
+  .hero-grid {
+    display:grid; grid-template-columns: 1fr; min-height: 560px;
+  }
+  @media (min-width: 1024px) {
+    .hero-grid { grid-template-columns: 1fr 1.5fr; min-height: 640px; }
+  }
+
+  /* Hide scrollbar of horizontal pill bar on mobile */
+  .nowrap-x { white-space:nowrap; overflow-x:auto; scrollbar-width:none; }
+  .nowrap-x::-webkit-scrollbar { display:none; }
+
+  /* Avoid horizontal scroll from edge-to-edge banner */
+  .full-bleed {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+  }
+  html, body { overflow-x: hidden; }
+</style>
+</head>
+<body class="bg-bg text-ink">
+
+<!-- ============== HEADER ============== -->
+<header id="site-header" class="sticky top-0 z-50 bg-bg border-b border-line/60 transition-shadow duration-300">
+  <div class="container-x h-[56px] md:h-[72px] flex items-center justify-between">
+    <!-- Left nav (desktop) -->
+    <nav class="hidden lg:flex items-center gap-8 text-[13px] text-ink">
+      <a class="ulink-grow hover:text-accent transition-colors" href="#">New Collection</a>
+      <a class="ulink-grow hover:text-accent transition-colors" href="#">Hijabs</a>
+      <a class="ulink-grow hover:text-accent transition-colors" href="#">Abayas</a>
+      <a class="ulink-grow hover:text-accent transition-colors" href="#">Essentials</a>
+    </nav>
+
+    <!-- Burger (mobile) -->
+    <button aria-label="Menu" class="lg:hidden p-2 -ml-2 text-ink">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
+    </button>
+
+    <!-- Logo -->
+    <a href="#" class="font-serif text-[16px] md:text-[18px] tracking-logo text-ink select-none">
+      M A I S O N &nbsp;·&nbsp; N O U R A
+    </a>
+
+    <!-- Right nav (desktop) -->
+    <nav class="hidden lg:flex items-center gap-8 text-[13px] text-ink">
+      <a class="ulink-grow hover:text-accent transition-colors" href="#">Search</a>
+      <a class="ulink-grow hover:text-accent transition-colors" href="#">Journal</a>
+      <a class="ulink-grow hover:text-accent transition-colors" href="#">Account</a>
+      <a class="ulink-grow hover:text-accent transition-colors" href="#">Cart (0)</a>
+    </nav>
+
+    <!-- Cart (mobile) -->
+    <a href="#" aria-label="Cart" class="lg:hidden text-[13px] text-ink p-2 -mr-2">Cart (0)</a>
+  </div>
+</header>
+
+<!-- ============== HERO ============== -->
+<section class="container-x pt-6 md:pt-8 lg:pt-10">
+  <div class="hero-grid rounded-md overflow-hidden">
+    <!-- Left dark column -->
+    <div class="bg-bg-dark text-ink-light p-10 md:p-16 lg:p-20 flex flex-col justify-center">
+      <div class="text-[11px] font-medium tracking-overline uppercase text-ink-light-muted">Spring '26</div>
+      <h1 class="font-serif text-[56px] md:text-[64px] lg:text-[72px] leading-[1.05] mt-5">
+        A Study in<br/>Softness
+      </h1>
+      <p class="mt-6 text-[14px] leading-[1.7] text-ink-light-muted max-w-[360px]">
+        Veils and modest silhouettes shaped by movement, comfort and quiet confidence.
+      </p>
+      <div class="mt-8 flex flex-wrap items-center gap-3">
+        <a href="#" class="inline-flex items-center justify-center rounded-full bg-bg text-ink px-6 py-3 text-[13px] font-medium tracking-wide hover:bg-bg-alt transition-colors">
+          Shop New Collection
+        </a>
+        <a href="#" class="inline-flex items-center justify-center rounded-full border border-ink-light/60 text-ink-light px-6 py-3 text-[13px] font-medium tracking-wide hover:bg-ink-light/10 transition-colors">
+          Explore Lookbook
+        </a>
+      </div>
+    </div>
+    <!-- Right image column -->
+    <div class="relative min-h-[320px] lg:min-h-0 overflow-hidden bg-bg-dark-2">
+      <img data-img="hero" alt="Spring '26 — woman in beige hijab"
+        src="https://ibb.co/VYpd2hzn"
+        class="absolute inset-0 w-full h-full object-cover" />
+    </div>
+  </div>
+</section>
+
+<!-- ============== CATEGORY PILL BAR ============== -->
+<section class="container-x py-6 reveal">
+  <div class="nowrap-x flex items-center justify-center gap-5 md:gap-7 text-[14px] text-ink">
+    <a href="#" class="hover:text-accent transition-colors">Jersey</a>
+    <span class="text-line">·</span>
+    <a href="#" class="hover:text-accent transition-colors">Silk Touch</a>
+    <span class="text-line">·</span>
+    <a href="#" class="hover:text-accent transition-colors">Khimars</a>
+    <span class="text-line">·</span>
+    <a href="#" class="hover:text-accent transition-colors">Abayas</a>
+    <span class="text-line">·</span>
+    <a href="#" class="hover:text-accent transition-colors">Essentials</a>
+  </div>
+</section>
+
+<!-- ============== SIGNATURE PIECES ============== -->
+<section class="container-x py-12 md:py-16 lg:py-20 reveal">
+  <h2 class="font-serif text-[32px] md:text-[40px] leading-tight mb-8">Signature Pieces</h2>
+
+  <div class="bento-sig">
+    <!-- Premium Jersey (large) -->
+    <a href="#" class="card sig-1 relative block rounded-md overflow-hidden bg-bg-dark-2">
+      <img data-img="sig-premium" alt="Premium Jersey" src="https://ibb.co/KcWgkB6w"
+        class="card-img absolute inset-0 w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-t from-bg-dark/75 via-bg-dark/10 to-transparent"></div>
+      <div class="absolute inset-0 p-5 md:p-7 flex flex-col justify-end">
+        <div class="flex items-end justify-between gap-4">
+          <div>
+            <h3 class="font-serif text-[22px] md:text-[28px] text-ink-light leading-tight">Premium Jersey</h3>
+            <p class="mt-1 text-[12px] text-ink-light-muted">Everyday comfort, effortless style.</p>
+          </div>
+          <span class="text-ink-light text-lg leading-none">→</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Silk Touch -->
+    <a href="#" class="card sig-2 relative block rounded-md overflow-hidden bg-bg-dark-2">
+      <img data-img="sig-silk" alt="Silk Touch" src="https://ibb.co/WpPPJXLS"
+        class="card-img absolute inset-0 w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-t from-bg-dark/70 to-transparent"></div>
+      <div class="absolute inset-0 p-4 md:p-5 flex flex-col justify-end">
+        <div class="flex items-end justify-between gap-3">
+          <div>
+            <h3 class="font-serif text-[20px] md:text-[22px] text-ink-light leading-tight">Silk Touch</h3>
+            <p class="mt-0.5 text-[11px] text-ink-light-muted">Luminous &amp; fluid</p>
+          </div>
+          <span class="text-ink-light text-base">→</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Khimars -->
+    <a href="#" class="card sig-3 relative block rounded-md overflow-hidden bg-bg-dark-2">
+      <img data-img="sig-khimars" alt="Khimars" src="https://ibb.co/Pz16KNrp"
+        class="card-img absolute inset-0 w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-t from-bg-dark/70 to-transparent"></div>
+      <div class="absolute inset-0 p-4 md:p-5 flex flex-col justify-end">
+        <div class="flex items-end justify-between gap-3">
+          <div>
+            <h3 class="font-serif text-[20px] md:text-[22px] text-ink-light leading-tight">Khimars</h3>
+            <p class="mt-0.5 text-[11px] text-ink-light-muted">Full coverage, easy wear</p>
+          </div>
+          <span class="text-ink-light text-base">→</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Everyday Essentials (wide) -->
+    <a href="#" class="card sig-4 relative block rounded-md overflow-hidden bg-bg-dark-2">
+      <img data-img="sig-essentials" alt="Everyday Essentials" src="https://ibb.co/tW2hFf4"
+        class="card-img absolute inset-0 w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-t from-bg-dark/75 via-bg-dark/15 to-transparent"></div>
+      <div class="absolute inset-0 p-5 md:p-7 flex flex-col justify-end">
+        <div class="flex items-end justify-between gap-4">
+          <div>
+            <h3 class="font-serif text-[22px] md:text-[26px] text-ink-light leading-tight">Everyday Essentials</h3>
+            <p class="mt-1 text-[12px] text-ink-light-muted">Timeless pieces for every day</p>
+          </div>
+          <span class="text-ink-light text-lg leading-none">→</span>
+        </div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ============== DESIGNED FOR QUIET PRESENCE ============== -->
+<section class="container-x py-16 lg:py-24 reveal">
+  <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-10 lg:gap-16 items-center">
+    <div>
+      <span class="block w-12 h-px bg-ink mb-8"></span>
+      <h2 class="font-serif text-[44px] md:text-[52px] lg:text-[56px] leading-[1.1]">
+        Designed for<br/>quiet presence.
+      </h2>
+      <p class="mt-6 text-[14px] leading-[1.7] text-ink-muted max-w-[320px]">
+        Soft textures, graceful coverage and timeless tones made for the rhythm of everyday life.
+      </p>
+      <a href="#" class="ulink inline-block mt-10 text-[13px] text-ink">Discover the Noor Collection</a>
+    </div>
+    <div class="relative aspect-[4/5] rounded-md overflow-hidden bg-bg-dark-2">
+      <img data-img="noor" alt="Noor Collection" src="https://ibb.co/93ZnVqNf"
+        class="absolute inset-0 w-full h-full object-cover" />
+    </div>
+  </div>
+</section>
+
+<!-- ============== CURATED SELECTION ============== -->
+<section class="container-x py-12 md:py-16 reveal">
+  <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-8">
+    <div>
+      <h2 class="font-serif text-[32px] md:text-[36px] leading-tight">Curated Selection</h2>
+      <div class="mt-4 flex items-center gap-5 text-[13px]">
+        <a href="#" class="text-ink pb-1 border-b border-ink">All</a>
+        <a href="#" class="text-ink-muted hover:text-ink transition-colors">Hijabs</a>
+        <a href="#" class="text-ink-muted hover:text-ink transition-colors">Khimars</a>
+        <a href="#" class="text-ink-muted hover:text-ink transition-colors">Abayas</a>
+        <a href="#" class="text-ink-muted hover:text-ink transition-colors">Sets</a>
+      </div>
+    </div>
+    <a href="#" class="ulink-grow inline-flex items-center gap-2 text-[13px] text-ink">
+      View All
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+    <!-- PRODUCT 1 -->
+    <a href="#" class="group">
+      <div class="card relative aspect-[4/5] rounded-md overflow-hidden bg-bg-alt">
+        <img data-img="prod-1" alt="Essential Jersey Hijab — Sand" src="https://ibb.co/Dgs1BfSh"
+          class="card-img absolute inset-0 w-full h-full object-cover" />
+        <span class="absolute top-3 left-3 bg-bg-light text-ink text-[11px] tracking-wide px-2.5 py-1 rounded-sm">New</span>
+      </div>
+      <div class="mt-4 mb-3 flex items-center gap-1.5">
+        <span class="w-3 h-3 rounded-full border border-line" style="background:#D9CFC1"></span>
+        <span class="w-3 h-3 rounded-full border border-line" style="background:#8B6F5C"></span>
+        <span class="w-3 h-3 rounded-full border border-line" style="background:#3D2E25"></span>
+      </div>
+      <h3 class="text-[14px] text-ink">Essential Jersey Hijab</h3>
+      <p class="text-[13px] text-ink-muted mt-0.5">Sand</p>
+      <p class="text-[14px] font-medium text-ink mt-1">290 Dh</p>
+    </a>
+
+    <!-- PRODUCT 2 -->
+    <a href="#" class="group">
+      <div class="card relative aspect-[4/5] rounded-md overflow-hidden bg-bg-alt">
+        <img data-img="prod-2" alt="Silk Touch Veil — Pearl Beige" src="https://ibb.co/0d8Qtgw"
+          class="card-img absolute inset-0 w-full h-full object-cover" />
+      </div>
+      <div class="mt-4 mb-3 flex items-center gap-1.5">
+        <span class="w-3 h-3 rounded-full border border-line" style="background:#F0E8DA"></span>
+        <span class="w-3 h-3 rounded-full border border-line" style="background:#C9B8A4"></span>
+        <span class="w-3 h-3 rounded-full border border-line" style="background:#8B6F5C"></span>
+      </div>
+      <h3 class="text-[14px] text-ink">Silk Touch Veil</h3>
+      <p class="text-[13px] text-ink-muted mt-0.5">Pearl Beige</p>
+      <p class="text-[14px] font-medium text-ink mt-1">390 Dh</p>
+    </a>
+
+    <!-- PRODUCT 3 -->
+    <a href="#" class="group">
+      <div class="card relative aspect-[4/5] rounded-md overflow-hidden bg-bg-alt">
+        <img data-img="prod-3" alt="Flow Abaya Set — Mocha" src="https://ibb.co/xtZFp6K8"
+          class="card-img absolute inset-0 w-full h-full object-cover" />
+      </div>
+      <div class="mt-4 mb-3 flex items-center gap-1.5">
+        <span class="w-3 h-3 rounded-full border border-line" style="background:#8B6F5C"></span>
+        <span class="w-3 h-3 rounded-full border border-line" style="background:#3D2E25"></span>
+        <span class="w-3 h-3 rounded-full border border-line" style="background:#2C2520"></span>
+      </div>
+      <h3 class="text-[14px] text-ink">Flow Abaya Set</h3>
+      <p class="text-[13px] text-ink-muted mt-0.5">Mocha</p>
+      <p class="text-[14px] font-medium text-ink mt-1">890 Dh</p>
+    </a>
+
+    <!-- PRODUCT 4 -->
+    <a href="#" class="group">
+      <div class="card relative aspect-[4/5] rounded-md overflow-hidden bg-bg-alt">
+        <img data-img="prod-4" alt="Khimar Soft Drape — Olive Grey" src="https://ibb.co/WpBXGVTd"
+          class="card-img absolute inset-0 w-full h-full object-cover" />
+      </div>
+      <div class="mt-4 mb-3 flex items-center gap-1.5">
+        <span class="w-3 h-3 rounded-full border border-line" style="background:#D9CFC1"></span>
+        <span class="w-3 h-3 rounded-full border border-line" style="background:#6B5D52"></span>
+        <span class="w-3 h-3 rounded-full border border-line" style="background:#2C2520"></span>
+      </div>
+      <h3 class="text-[14px] text-ink">Khimar Soft Drape</h3>
+      <p class="text-[13px] text-ink-muted mt-0.5">Olive Grey</p>
+      <p class="text-[14px] font-medium text-ink mt-1">460 Dh</p>
+    </a>
+  </div>
+</section>
+
+<!-- ============== MADE FOR SOFTNESS — FABRICS ============== -->
+<section class="container-x py-16 lg:py-24 reveal">
+  <div class="grid grid-cols-1 lg:grid-cols-[1fr_2.5fr] gap-8 lg:gap-12 items-center">
+    <div>
+      <h2 class="font-serif text-[32px] md:text-[40px] leading-[1.15]">
+        Made for softness,<br/>opacity and<br/>all-day comfort.
+      </h2>
+      <p class="mt-6 text-[14px] leading-[1.7] text-ink-muted max-w-[320px]">
+        Every fabric is selected for drape, coverage and ease of wear.
+      </p>
+      <a href="#" class="ulink inline-block mt-8 text-[13px] text-ink">Learn more about our fabrics</a>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+      <a href="#" class="card relative aspect-[3/4] sm:aspect-[3/4] rounded-md overflow-hidden bg-bg-dark-2 block">
+        <img data-img="fabric-1" alt="Soft Touch Jersey" src="https://ibb.co/sdF6tS55"
+          class="card-img absolute inset-0 w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-gradient-to-t from-bg-dark/85 via-bg-dark/25 to-transparent"></div>
+        <div class="absolute inset-0 p-5 flex flex-col justify-end">
+          <h3 class="font-serif text-[20px] text-ink-light leading-tight">Soft Touch Jersey</h3>
+          <p class="mt-1 text-[11px] text-ink-light-muted">Stretch, breathable, everyday comfort.</p>
+        </div>
+      </a>
+      <a href="#" class="card relative aspect-[3/4] sm:aspect-[3/4] rounded-md overflow-hidden bg-bg-dark-2 block">
+        <img data-img="fabric-2" alt="Luminous Silk Touch" src="https://ibb.co/sdzWByWF"
+          class="card-img absolute inset-0 w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-gradient-to-t from-bg-dark/85 via-bg-dark/25 to-transparent"></div>
+        <div class="absolute inset-0 p-5 flex flex-col justify-end">
+          <h3 class="font-serif text-[20px] text-ink-light leading-tight">Luminous Silk Touch</h3>
+          <p class="mt-1 text-[11px] text-ink-light-muted">Fluid sheen, elegant drape, occasion-ready.</p>
+        </div>
+      </a>
+      <a href="#" class="card relative aspect-[3/4] sm:aspect-[3/4] rounded-md overflow-hidden bg-bg-dark-2 block">
+        <img data-img="fabric-3" alt="Everyday Khimar Fabric" src="https://ibb.co/cRJTGdV"
+          class="card-img absolute inset-0 w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-gradient-to-t from-bg-dark/85 via-bg-dark/25 to-transparent"></div>
+        <div class="absolute inset-0 p-5 flex flex-col justify-end">
+          <h3 class="font-serif text-[20px] text-ink-light leading-tight">Everyday Khimar Fabric</h3>
+          <p class="mt-1 text-[11px] text-ink-light-muted">Opaque, lightweight, secure coverage.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============== RAMADAN EDIT — EDGE TO EDGE ============== -->
+<section class="full-bleed relative reveal">
+  <div class="relative min-h-[420px] md:min-h-[480px] bg-bg-dark-2 overflow-hidden">
+    <img data-img="ramadan" alt="The Ramadan Edit" src="https://ibb.co/3Ys6Rw4K"
+      class="absolute inset-0 w-full h-full object-cover" />
+    <div class="absolute inset-0 bg-gradient-to-r from-bg-dark/55 via-bg-dark/15 to-transparent"></div>
+    <div class="relative container-x h-full">
+      <div class="absolute top-0 left-0 right-0 p-8 md:p-12 lg:p-16">
+        <h2 class="font-serif text-[44px] md:text-[52px] lg:text-[56px] leading-[1.05] text-ink-light max-w-[640px]">
+          The Ramadan Edit
+        </h2>
+        <p class="mt-3 text-[14px] text-ink-light-muted">Quiet silhouettes for meaningful days.</p>
+      </div>
+      <div class="absolute bottom-0 right-0 p-8 md:p-12 lg:p-16">
+        <a href="#" class="ulink text-[13px] text-ink-light">Shop the Lookbook  →</a>
+      </div>
+      <!-- Spacer to keep min-height when absolute children -->
+      <div class="invisible min-h-[420px] md:min-h-[480px]"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== LOOK BENTO GALLERY ============== -->
+<section class="container-x mt-3 reveal">
+  <div class="bento-look">
+    <a href="#" class="card look-1 relative block rounded-md overflow-hidden bg-bg-dark-2">
+      <img data-img="look-1" alt="Look 01" src="https://ibb.co/JRTHGVZ7"
+        class="card-img absolute inset-0 w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-t from-bg-dark/75 via-bg-dark/10 to-transparent"></div>
+      <div class="absolute inset-0 p-5 md:p-6 flex flex-col justify-end">
+        <span class="text-[12px] font-medium tracking-overline uppercase text-ink-light">Look 01</span>
+        <p class="mt-1 text-[11px] text-ink-light-muted">Shop the look  →</p>
+      </div>
+    </a>
+    <a href="#" class="card look-2 relative block rounded-md overflow-hidden bg-bg-dark-2">
+      <img data-img="look-2" alt="Look 02" src="https://ibb.co/whhz0z7y"
+        class="card-img absolute inset-0 w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-t from-bg-dark/75 via-bg-dark/10 to-transparent"></div>
+      <div class="absolute inset-0 p-4 flex flex-col justify-end">
+        <span class="text-[12px] font-medium tracking-overline uppercase text-ink-light">Look 02</span>
+        <p class="mt-0.5 text-[11px] text-ink-light-muted">Shop the look  →</p>
+      </div>
+    </a>
+    <a href="#" class="card look-3 relative block rounded-md overflow-hidden bg-bg-dark-2">
+      <img data-img="look-3" alt="Look 03" src="https://ibb.co/BHtwrKJc"
+        class="card-img absolute inset-0 w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-t from-bg-dark/75 via-bg-dark/10 to-transparent"></div>
+      <div class="absolute inset-0 p-4 flex flex-col justify-end">
+        <span class="text-[12px] font-medium tracking-overline uppercase text-ink-light">Look 03</span>
+        <p class="mt-0.5 text-[11px] text-ink-light-muted">Shop the look  →</p>
+      </div>
+    </a>
+    <a href="#" class="card look-4 relative block rounded-md overflow-hidden bg-bg-dark-2">
+      <img data-img="details" alt="Details" src="https://ibb.co/3ykxRy53"
+        class="card-img absolute inset-0 w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-t from-bg-dark/70 via-bg-dark/10 to-transparent"></div>
+      <div class="absolute inset-0 p-5 md:p-6 flex flex-col justify-end">
+        <span class="text-[12px] font-medium tracking-overline uppercase text-ink-light">Details</span>
+        <p class="mt-1 text-[11px] text-ink-light-muted">The finishing touch</p>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ============== THREE PILLARS ============== -->
+<section class="container-x py-12 md:py-16 reveal">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0">
+    <div class="flex items-start gap-4 md:px-8 md:first:pl-0">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" class="text-ink shrink-0 mt-0.5">
+        <path d="M3 8c2 1.4 4 1.4 6 0s4-1.4 6 0 4 1.4 6 0"/>
+        <path d="M3 12c2 1.4 4 1.4 6 0s4-1.4 6 0 4 1.4 6 0"/>
+        <path d="M3 16c2 1.4 4 1.4 6 0s4-1.4 6 0 4 1.4 6 0"/>
+      </svg>
+      <div>
+        <h3 class="text-[14px] font-medium text-ink">Soft fabrics</h3>
+        <p class="mt-1.5 text-[12px] leading-[1.6] text-ink-muted max-w-[240px]">Carefully chosen for comfort, drape and breathability.</p>
+      </div>
+    </div>
+    <div class="flex items-start gap-4 md:px-8 md:border-l md:border-line/40">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" class="text-ink shrink-0 mt-0.5">
+        <circle cx="12" cy="9" r="3"/>
+        <path d="M4.5 21c1.5-4 4.5-6 7.5-6s6 2 7.5 6"/>
+      </svg>
+      <div>
+        <h3 class="text-[14px] font-medium text-ink">Thoughtful coverage</h3>
+        <p class="mt-1.5 text-[12px] leading-[1.6] text-ink-muted max-w-[240px]">Designed to move with you, with confidence and ease.</p>
+      </div>
+    </div>
+    <div class="flex items-start gap-4 md:px-8 md:border-l md:border-line/40">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" class="text-ink shrink-0 mt-0.5">
+        <path d="M12 20s-7-4.35-7-10a4 4 0 0 1 7-2.65A4 4 0 0 1 19 10c0 5.65-7 10-7 10z"/>
+      </svg>
+      <div>
+        <h3 class="text-[14px] font-medium text-ink">Timeless silhouettes</h3>
+        <p class="mt-1.5 text-[12px] leading-[1.6] text-ink-muted max-w-[240px]">Elevated pieces you'll return to, season after season.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== JOURNAL + PROMISE ============== -->
+<section class="container-x py-12 md:py-16 reveal">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+    <article class="bg-bg-alt rounded-md overflow-hidden p-6 md:p-8 grid grid-cols-1 sm:grid-cols-2 gap-6 items-center">
+      <div>
+        <h3 class="font-serif text-[24px] md:text-[28px] leading-tight text-ink">The Journal</h3>
+        <p class="mt-3 text-[13px] leading-[1.7] text-ink-muted">Stories on modest fashion, care, styling and everyday elegance.</p>
+        <a href="#" class="ulink inline-block mt-6 text-[13px] text-ink">Explore Journal  →</a>
+      </div>
+      <div class="relative aspect-[4/3] sm:aspect-square rounded-md overflow-hidden bg-bg-dark-2">
+        <img data-img="journal" alt="Journal" src="https://ibb.co/nXycbst"
+          class="absolute inset-0 w-full h-full object-cover" />
+      </div>
+    </article>
+    <article class="bg-bg-alt rounded-md overflow-hidden p-6 md:p-8 grid grid-cols-1 sm:grid-cols-2 gap-6 items-center">
+      <div>
+        <h3 class="font-serif text-[24px] md:text-[28px] leading-tight text-ink">Our Promise</h3>
+        <p class="mt-3 text-[13px] leading-[1.7] text-ink-muted">Refined pieces designed with comfort, coverage and grace in mind.</p>
+        <a href="#" class="ulink inline-block mt-6 text-[13px] text-ink">Read Our Promise  →</a>
+      </div>
+      <div class="relative aspect-[4/3] sm:aspect-square rounded-md overflow-hidden bg-bg-dark-2">
+        <img data-img="promise" alt="Our Promise" src="https://ibb.co/nXycbst"
+          class="absolute inset-0 w-full h-full object-cover" />
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============== NEWSLETTER ============== -->
+<section class="container-x py-16 md:py-20 reveal">
+  <div class="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-10 items-center">
+    <div class="text-center lg:text-left max-w-[640px] lg:max-w-none mx-auto lg:mx-0">
+      <h2 class="font-serif text-[32px] md:text-[40px] leading-tight">
+        Enter the world of <em class="italic">Maison Noura.</em>
+      </h2>
+      <p class="mt-4 text-[14px] text-ink-muted">Receive early access to new drops, styling notes and private edits.</p>
+      <form class="mt-6 flex flex-col sm:flex-row gap-2 sm:gap-2 max-w-[520px] mx-auto lg:mx-0" onsubmit="event.preventDefault()">
+        <input type="email" placeholder="Enter your email"
+          class="flex-1 bg-bg-alt border-0 rounded-sm px-5 py-3.5 text-[14px] placeholder:text-ink-muted focus:outline-none focus:ring-1 focus:ring-ink/40" />
+        <button class="bg-bg-dark text-ink-light rounded-sm px-8 py-3.5 text-[14px] font-medium tracking-wide hover:bg-bg-dark-2 transition-colors">
+          Subscribe
+        </button>
+      </form>
+    </div>
+    <div class="hidden lg:block relative aspect-[4/5] rounded-md overflow-hidden bg-bg-dark-2">
+      <img data-img="newsletter" alt="Maison Noura ambiance" src="https://ibb.co/nXycbst"
+        class="absolute inset-0 w-full h-full object-cover" />
+    </div>
+  </div>
+</section>
+
+<!-- ============== FOOTER ============== -->
+<footer class="border-t border-line/60">
+  <div class="container-x py-12 md:py-16">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-10">
+      <div>
+        <h4 class="text-[12px] font-medium tracking-overline uppercase text-ink-muted mb-4">Shop</h4>
+        <ul class="space-y-2.5 text-[13px]">
+          <li><a class="text-ink hover:text-accent transition-colors" href="#">New Collection</a></li>
+          <li><a class="text-ink hover:text-accent transition-colors" href="#">Hijabs</a></li>
+          <li><a class="text-ink hover:text-accent transition-colors" href="#">Abayas</a></li>
+          <li><a class="text-ink hover:text-accent transition-colors" href="#">Essentials</a></li>
+          <li><a class="text-ink hover:text-accent transition-colors" href="#">Sets</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-[12px] font-medium tracking-overline uppercase text-ink-muted mb-4">Help</h4>
+        <ul class="space-y-2.5 text-[13px]">
+          <li><a class="text-ink hover:text-accent transition-colors" href="#">Shipping &amp; Delivery</a></li>
+          <li><a class="text-ink hover:text-accent transition-colors" href="#">Returns</a></li>
+          <li><a class="text-ink hover:text-accent transition-colors" href="#">FAQ</a></li>
+          <li><a class="text-ink hover:text-accent transition-colors" href="#">Size Guide</a></li>
+          <li><a class="text-ink hover:text-accent transition-colors" href="#">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-[12px] font-medium tracking-overline uppercase text-ink-muted mb-4">Brand</h4>
+        <ul class="space-y-2.5 text-[13px]">
+          <li><a class="text-ink hover:text-accent transition-colors" href="#">Our Story</a></li>
+          <li><a class="text-ink hover:text-accent transition-colors" href="#">Sustainability</a></li>
+          <li><a class="text-ink hover:text-accent transition-colors" href="#">Journal</a></li>
+          <li><a class="text-ink hover:text-accent transition-colors" href="#">Stockists</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-[12px] font-medium tracking-overline uppercase text-ink-muted mb-4">Newsletter</h4>
+        <p class="text-[13px] text-ink-muted mb-4 leading-[1.6]">Be the first to know about new collections and updates.</p>
+        <form class="flex items-center bg-bg-alt rounded-full pl-4 pr-1 py-1" onsubmit="event.preventDefault()">
+          <input type="email" placeholder="Enter your email"
+            class="flex-1 bg-transparent border-0 text-[13px] py-2 placeholder:text-ink-muted focus:outline-none" />
+          <button aria-label="Subscribe" class="bg-bg-dark text-ink-light rounded-full w-8 h-8 grid place-items-center hover:bg-bg-dark-2 transition-colors">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="mt-12 pt-6 border-t border-line/40 flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-[12px] text-ink-muted">
+      <p>© 2026 Maison Noura. All rights reserved.</p>
+      <div class="flex items-center gap-6">
+        <div class="flex items-center gap-4 text-ink">
+          <a href="#" aria-label="Instagram" class="hover:text-accent transition-colors">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.9" fill="currentColor"/></svg>
+          </a>
+          <a href="#" aria-label="Pinterest" class="hover:text-accent transition-colors">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M11 8c2 0 4 1.3 4 3.6 0 2.3-1.5 3.9-3.3 3.9-1 0-1.7-.5-1.5-1.4l.6-2.6"/><path d="M10 21l1.5-6"/></svg>
+          </a>
+          <a href="#" aria-label="TikTok" class="hover:text-accent transition-colors">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4v9.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 4c.5 2.5 2.5 4.5 5 5"/></svg>
+          </a>
+        </div>
+        <p>Privacy Policy &nbsp;·&nbsp; Terms &amp; Conditions</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Header shadow on scroll
+  (function () {
+    const header = document.getElementById('site-header');
+    const onScroll = () => {
+      if (window.scrollY > 50) header.classList.add('shadow-sm');
+      else header.classList.remove('shadow-sm');
+    };
+    document.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+
+  // Reveal on scroll
+  (function () {
+    const els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) {
+      els.forEach(el => el.classList.add('is-visible'));
+      return;
+    }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+    els.forEach(el => io.observe(el));
+  })();
+
+  // Image fallback: if any <img> fails to load, swap to a warm-toned
+  // placeholder built from the brand palette so we never show a broken icon.
+  (function () {
+    const palette = {
+      'hero':         { w: 1600, h: 1100, bg: '8B6F5C', fg: 'F0E8DA', label: 'Maison Noura' },
+      'sig-premium':  { w: 900,  h: 1200, bg: '6B5D52', fg: 'F0E8DA', label: 'Premium Jersey' },
+      'sig-silk':     { w: 700,  h: 500,  bg: 'C9B8A4', fg: '2C2520', label: 'Silk Touch' },
+      'sig-khimars':  { w: 700,  h: 500,  bg: '8B6F5C', fg: 'F0E8DA', label: 'Khimars' },
+      'sig-essentials':{w: 1100, h: 500,  bg: '3D2E25', fg: 'F0E8DA', label: 'Everyday Essentials' },
+      'noor':         { w: 1100, h: 1300, bg: '5A4A3D', fg: 'F0E8DA', label: 'Noor Collection' },
+      'prod-1':       { w: 800,  h: 1000, bg: 'D9CFC1', fg: '2C2520', label: 'Essential Jersey Hijab' },
+      'prod-2':       { w: 800,  h: 1000, bg: 'E5DBC9', fg: '2C2520', label: 'Silk Touch Veil' },
+      'prod-3':       { w: 800,  h: 1000, bg: '8B6F5C', fg: 'F0E8DA', label: 'Flow Abaya Set' },
+      'prod-4':       { w: 800,  h: 1000, bg: '6B5D52', fg: 'F0E8DA', label: 'Khimar Soft Drape' },
+      'fabric-1':     { w: 700,  h: 900,  bg: 'C9B8A4', fg: '2C2520', label: 'Soft Touch Jersey' },
+      'fabric-2':     { w: 700,  h: 900,  bg: 'E5DBC9', fg: '2C2520', label: 'Luminous Silk Touch' },
+      'fabric-3':     { w: 700,  h: 900,  bg: '8B6F5C', fg: 'F0E8DA', label: 'Everyday Khimar Fabric' },
+      'ramadan':      { w: 1920, h: 800,  bg: '3D2E25', fg: 'F0E8DA', label: 'The Ramadan Edit' },
+      'look-1':       { w: 900,  h: 1200, bg: '5A4A3D', fg: 'F0E8DA', label: 'Look 01' },
+      'look-2':       { w: 700,  h: 500,  bg: '8B6F5C', fg: 'F0E8DA', label: 'Look 02' },
+      'look-3':       { w: 700,  h: 500,  bg: '3D2E25', fg: 'F0E8DA', label: 'Look 03' },
+      'details':      { w: 900,  h: 1200, bg: 'C9B8A4', fg: '2C2520', label: 'Details' },
+      'journal':      { w: 700,  h: 700,  bg: 'E5DBC9', fg: '2C2520', label: 'The Journal' },
+      'promise':      { w: 700,  h: 700,  bg: 'D9CFC1', fg: '2C2520', label: 'Our Promise' },
+      'newsletter':   { w: 700,  h: 900,  bg: '8B6F5C', fg: 'F0E8DA', label: 'Maison Noura' },
+    };
+    document.querySelectorAll('img[data-img]').forEach(img => {
+      img.addEventListener('error', function onErr() {
+        const key = img.getAttribute('data-img');
+        const p = palette[key];
+        if (!p) return;
+        img.removeEventListener('error', onErr);
+        img.src = `https://placehold.co/${p.w}x${p.h}/${p.bg}/${p.fg}?font=playfair-display&text=${encodeURIComponent(p.label)}`;
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
