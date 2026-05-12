@@ -139,8 +139,9 @@
     </nav>
 
     <!-- Burger (mobile) -->
-    <button aria-label="Menu" class="lg:hidden p-2 -ml-2 text-ink">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
+    <button id="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" class="lg:hidden p-2 -ml-2 text-ink">
+      <svg id="menu-icon-open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
+      <svg id="menu-icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" class="hidden"><path d="M6 6l12 12M18 6L6 18"/></svg>
     </button>
 
     <!-- Logo -->
@@ -158,6 +159,21 @@
 
     <!-- Cart (mobile) -->
     <a href="#" aria-label="Cart" class="lg:hidden text-[13px] text-ink p-2 -mr-2">Cart (0)</a>
+  </div>
+
+  <!-- Mobile menu panel -->
+  <div id="mobile-menu" class="lg:hidden hidden border-t border-line/60 bg-bg">
+    <nav class="container-x py-6 flex flex-col gap-1 text-[15px] text-ink">
+      <a class="py-2.5 border-b border-line/40" href="#">New Collection</a>
+      <a class="py-2.5 border-b border-line/40" href="#">Hijabs</a>
+      <a class="py-2.5 border-b border-line/40" href="#">Abayas</a>
+      <a class="py-2.5 border-b border-line/40" href="#">Essentials</a>
+      <div class="mt-4 flex flex-col gap-1 text-[13px] text-ink-muted">
+        <a class="py-2" href="#">Search</a>
+        <a class="py-2" href="#">Journal</a>
+        <a class="py-2" href="#">Account</a>
+      </div>
+    </nav>
   </div>
 </header>
 
@@ -185,7 +201,7 @@
     <!-- Right image column -->
     <div class="relative min-h-[320px] lg:min-h-0 overflow-hidden bg-bg-dark-2">
       <img data-img="hero" alt="Spring '26 — woman in beige hijab"
-        src="https://ibb.co/VYpd2hzn"
+        src="https://i.ibb.co/KxzYFQf4/Chat-GPT-Image-12-mai-2026-02-10-07.png"
         class="absolute inset-0 w-full h-full object-cover" />
     </div>
   </div>
@@ -213,7 +229,7 @@
   <div class="bento-sig">
     <!-- Premium Jersey (large) -->
     <a href="#" class="card sig-1 relative block rounded-md overflow-hidden bg-bg-dark-2">
-      <img data-img="sig-premium" alt="Premium Jersey" src="https://ibb.co/KcWgkB6w"
+      <img data-img="sig-premium" alt="Premium Jersey" src="https://i.ibb.co/nqjyv4rC/Chat-GPT-Image-12-mai-2026-02-11-20.png"
         class="card-img absolute inset-0 w-full h-full object-cover" />
       <div class="absolute inset-0 bg-gradient-to-t from-bg-dark/75 via-bg-dark/10 to-transparent"></div>
       <div class="absolute inset-0 p-5 md:p-7 flex flex-col justify-end">
@@ -229,7 +245,7 @@
 
     <!-- Silk Touch -->
     <a href="#" class="card sig-2 relative block rounded-md overflow-hidden bg-bg-dark-2">
-      <img data-img="sig-silk" alt="Silk Touch" src="https://ibb.co/WpPPJXLS"
+      <img data-img="sig-silk" alt="Silk Touch" src="https://i.ibb.co/prRRFTSC/Chat-GPT-Image-12-mai-2026-02-12-30.png"
         class="card-img absolute inset-0 w-full h-full object-cover" />
       <div class="absolute inset-0 bg-gradient-to-t from-bg-dark/70 to-transparent"></div>
       <div class="absolute inset-0 p-4 md:p-5 flex flex-col justify-end">
@@ -245,7 +261,7 @@
 
     <!-- Khimars -->
     <a href="#" class="card sig-3 relative block rounded-md overflow-hidden bg-bg-dark-2">
-      <img data-img="sig-khimars" alt="Khimars" src="https://ibb.co/Pz16KNrp"
+      <img data-img="sig-khimars" alt="Khimars" src="https://i.ibb.co/M5PCrsgT/Chat-GPT-Image-12-mai-2026-02-14-15.png"
         class="card-img absolute inset-0 w-full h-full object-cover" />
       <div class="absolute inset-0 bg-gradient-to-t from-bg-dark/70 to-transparent"></div>
       <div class="absolute inset-0 p-4 md:p-5 flex flex-col justify-end">
@@ -261,7 +277,7 @@
 
     <!-- Everyday Essentials (wide) -->
     <a href="#" class="card sig-4 relative block rounded-md overflow-hidden bg-bg-dark-2">
-      <img data-img="sig-essentials" alt="Everyday Essentials" src="https://ibb.co/tW2hFf4"
+      <img data-img="sig-essentials" alt="Everyday Essentials" src="https://i.ibb.co/GbMJNw0/Chat-GPT-Image-12-mai-2026-02-15-18.png"
         class="card-img absolute inset-0 w-full h-full object-cover" />
       <div class="absolute inset-0 bg-gradient-to-t from-bg-dark/75 via-bg-dark/15 to-transparent"></div>
       <div class="absolute inset-0 p-5 md:p-7 flex flex-col justify-end">
@@ -291,7 +307,7 @@
       <a href="#" class="ulink inline-block mt-10 text-[13px] text-ink">Discover the Noor Collection</a>
     </div>
     <div class="relative aspect-[4/5] rounded-md overflow-hidden bg-bg-dark-2">
-      <img data-img="noor" alt="Noor Collection" src="https://ibb.co/93ZnVqNf"
+      <img data-img="noor" alt="Noor Collection" src="https://i.ibb.co/qFJBWRd4/Chat-GPT-Image-12-mai-2026-02-17-41.png"
         class="absolute inset-0 w-full h-full object-cover" />
     </div>
   </div>
@@ -320,7 +336,7 @@
     <!-- PRODUCT 1 -->
     <a href="#" class="group">
       <div class="card relative aspect-[4/5] rounded-md overflow-hidden bg-bg-alt">
-        <img data-img="prod-1" alt="Essential Jersey Hijab — Sand" src="https://ibb.co/Dgs1BfSh"
+        <img data-img="prod-1" alt="Essential Jersey Hijab — Sand" src="https://i.ibb.co/M5Wgzk3r/Chat-GPT-Image-12-mai-2026-02-18-57.png"
           class="card-img absolute inset-0 w-full h-full object-cover" />
         <span class="absolute top-3 left-3 bg-bg-light text-ink text-[11px] tracking-wide px-2.5 py-1 rounded-sm">New</span>
       </div>
@@ -337,7 +353,7 @@
     <!-- PRODUCT 2 -->
     <a href="#" class="group">
       <div class="card relative aspect-[4/5] rounded-md overflow-hidden bg-bg-alt">
-        <img data-img="prod-2" alt="Silk Touch Veil — Pearl Beige" src="https://ibb.co/0d8Qtgw"
+        <img data-img="prod-2" alt="Silk Touch Veil — Pearl Beige" src="https://i.ibb.co/6fVNB3d/Chat-GPT-Image-12-mai-2026-02-19-53.png"
           class="card-img absolute inset-0 w-full h-full object-cover" />
       </div>
       <div class="mt-4 mb-3 flex items-center gap-1.5">
@@ -353,7 +369,7 @@
     <!-- PRODUCT 3 -->
     <a href="#" class="group">
       <div class="card relative aspect-[4/5] rounded-md overflow-hidden bg-bg-alt">
-        <img data-img="prod-3" alt="Flow Abaya Set — Mocha" src="https://ibb.co/xtZFp6K8"
+        <img data-img="prod-3" alt="Flow Abaya Set — Mocha" src="https://i.ibb.co/DHdrxQPg/Chat-GPT-Image-12-mai-2026-02-21-14.png"
           class="card-img absolute inset-0 w-full h-full object-cover" />
       </div>
       <div class="mt-4 mb-3 flex items-center gap-1.5">
@@ -369,7 +385,7 @@
     <!-- PRODUCT 4 -->
     <a href="#" class="group">
       <div class="card relative aspect-[4/5] rounded-md overflow-hidden bg-bg-alt">
-        <img data-img="prod-4" alt="Khimar Soft Drape — Olive Grey" src="https://ibb.co/WpBXGVTd"
+        <img data-img="prod-4" alt="Khimar Soft Drape — Olive Grey" src="https://i.ibb.co/1JRN7zSp/Chat-GPT-Image-12-mai-2026-02-24-10.png"
           class="card-img absolute inset-0 w-full h-full object-cover" />
       </div>
       <div class="mt-4 mb-3 flex items-center gap-1.5">
@@ -399,7 +415,7 @@
 
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
       <a href="#" class="card relative aspect-[3/4] sm:aspect-[3/4] rounded-md overflow-hidden bg-bg-dark-2 block">
-        <img data-img="fabric-1" alt="Soft Touch Jersey" src="https://ibb.co/sdF6tS55"
+        <img data-img="fabric-1" alt="Soft Touch Jersey" src="https://i.ibb.co/xtMf3vmm/Chat-GPT-Image-12-mai-2026-02-25-16.png"
           class="card-img absolute inset-0 w-full h-full object-cover" />
         <div class="absolute inset-0 bg-gradient-to-t from-bg-dark/85 via-bg-dark/25 to-transparent"></div>
         <div class="absolute inset-0 p-5 flex flex-col justify-end">
@@ -408,7 +424,7 @@
         </div>
       </a>
       <a href="#" class="card relative aspect-[3/4] sm:aspect-[3/4] rounded-md overflow-hidden bg-bg-dark-2 block">
-        <img data-img="fabric-2" alt="Luminous Silk Touch" src="https://ibb.co/sdzWByWF"
+        <img data-img="fabric-2" alt="Luminous Silk Touch" src="https://i.ibb.co/Q3tD5rD6/Chat-GPT-Image-12-mai-2026-02-26-40.png"
           class="card-img absolute inset-0 w-full h-full object-cover" />
         <div class="absolute inset-0 bg-gradient-to-t from-bg-dark/85 via-bg-dark/25 to-transparent"></div>
         <div class="absolute inset-0 p-5 flex flex-col justify-end">
@@ -417,7 +433,7 @@
         </div>
       </a>
       <a href="#" class="card relative aspect-[3/4] sm:aspect-[3/4] rounded-md overflow-hidden bg-bg-dark-2 block">
-        <img data-img="fabric-3" alt="Everyday Khimar Fabric" src="https://ibb.co/cRJTGdV"
+        <img data-img="fabric-3" alt="Everyday Khimar Fabric" src="https://i.ibb.co/PJxC780/Chat-GPT-Image-12-mai-2026-02-28-06.png"
           class="card-img absolute inset-0 w-full h-full object-cover" />
         <div class="absolute inset-0 bg-gradient-to-t from-bg-dark/85 via-bg-dark/25 to-transparent"></div>
         <div class="absolute inset-0 p-5 flex flex-col justify-end">
@@ -432,7 +448,7 @@
 <!-- ============== RAMADAN EDIT — EDGE TO EDGE ============== -->
 <section class="full-bleed relative reveal">
   <div class="relative min-h-[420px] md:min-h-[480px] bg-bg-dark-2 overflow-hidden">
-    <img data-img="ramadan" alt="The Ramadan Edit" src="https://ibb.co/3Ys6Rw4K"
+    <img data-img="ramadan" alt="The Ramadan Edit" src="https://i.ibb.co/R4Srj1Y8/Chat-GPT-Image-12-mai-2026-02-29-51.png"
       class="absolute inset-0 w-full h-full object-cover" />
     <div class="absolute inset-0 bg-gradient-to-r from-bg-dark/55 via-bg-dark/15 to-transparent"></div>
     <div class="relative container-x h-full">
@@ -455,7 +471,7 @@
 <section class="container-x mt-3 reveal">
   <div class="bento-look">
     <a href="#" class="card look-1 relative block rounded-md overflow-hidden bg-bg-dark-2">
-      <img data-img="look-1" alt="Look 01" src="https://ibb.co/JRTHGVZ7"
+      <img data-img="look-1" alt="Look 01" src="https://i.ibb.co/DDFQvhdC/Chat-GPT-Image-12-mai-2026-02-31-21.png"
         class="card-img absolute inset-0 w-full h-full object-cover" />
       <div class="absolute inset-0 bg-gradient-to-t from-bg-dark/75 via-bg-dark/10 to-transparent"></div>
       <div class="absolute inset-0 p-5 md:p-6 flex flex-col justify-end">
@@ -464,7 +480,7 @@
       </div>
     </a>
     <a href="#" class="card look-2 relative block rounded-md overflow-hidden bg-bg-dark-2">
-      <img data-img="look-2" alt="Look 02" src="https://ibb.co/whhz0z7y"
+      <img data-img="look-2" alt="Look 02" src="https://i.ibb.co/HTTHFHC7/Chat-GPT-Image-12-mai-2026-02-33-49.png"
         class="card-img absolute inset-0 w-full h-full object-cover" />
       <div class="absolute inset-0 bg-gradient-to-t from-bg-dark/75 via-bg-dark/10 to-transparent"></div>
       <div class="absolute inset-0 p-4 flex flex-col justify-end">
@@ -473,7 +489,7 @@
       </div>
     </a>
     <a href="#" class="card look-3 relative block rounded-md overflow-hidden bg-bg-dark-2">
-      <img data-img="look-3" alt="Look 03" src="https://ibb.co/BHtwrKJc"
+      <img data-img="look-3" alt="Look 03" src="https://i.ibb.co/qLdxWF87/Chat-GPT-Image-12-mai-2026-02-34-57.png"
         class="card-img absolute inset-0 w-full h-full object-cover" />
       <div class="absolute inset-0 bg-gradient-to-t from-bg-dark/75 via-bg-dark/10 to-transparent"></div>
       <div class="absolute inset-0 p-4 flex flex-col justify-end">
@@ -482,7 +498,7 @@
       </div>
     </a>
     <a href="#" class="card look-4 relative block rounded-md overflow-hidden bg-bg-dark-2">
-      <img data-img="details" alt="Details" src="https://ibb.co/3ykxRy53"
+      <img data-img="details" alt="Details" src="https://i.ibb.co/MD9zBDyv/Chat-GPT-Image-12-mai-2026-02-36-26.png"
         class="card-img absolute inset-0 w-full h-full object-cover" />
       <div class="absolute inset-0 bg-gradient-to-t from-bg-dark/70 via-bg-dark/10 to-transparent"></div>
       <div class="absolute inset-0 p-5 md:p-6 flex flex-col justify-end">
@@ -539,7 +555,7 @@
         <a href="#" class="ulink inline-block mt-6 text-[13px] text-ink">Explore Journal  →</a>
       </div>
       <div class="relative aspect-[4/3] sm:aspect-square rounded-md overflow-hidden bg-bg-dark-2">
-        <img data-img="journal" alt="Journal" src="https://ibb.co/nXycbst"
+        <img data-img="journal" alt="Journal" src="https://i.ibb.co/kLT8xgv/Chat-GPT-Image-12-mai-2026-02-37-32.png"
           class="absolute inset-0 w-full h-full object-cover" />
       </div>
     </article>
@@ -550,7 +566,7 @@
         <a href="#" class="ulink inline-block mt-6 text-[13px] text-ink">Read Our Promise  →</a>
       </div>
       <div class="relative aspect-[4/3] sm:aspect-square rounded-md overflow-hidden bg-bg-dark-2">
-        <img data-img="promise" alt="Our Promise" src="https://ibb.co/nXycbst"
+        <img data-img="promise" alt="Our Promise" src="https://i.ibb.co/kLT8xgv/Chat-GPT-Image-12-mai-2026-02-37-32.png"
           class="absolute inset-0 w-full h-full object-cover" />
       </div>
     </article>
@@ -574,7 +590,7 @@
       </form>
     </div>
     <div class="hidden lg:block relative aspect-[4/5] rounded-md overflow-hidden bg-bg-dark-2">
-      <img data-img="newsletter" alt="Maison Noura ambiance" src="https://ibb.co/nXycbst"
+      <img data-img="newsletter" alt="Maison Noura ambiance" src="https://i.ibb.co/kLT8xgv/Chat-GPT-Image-12-mai-2026-02-37-32.png"
         class="absolute inset-0 w-full h-full object-cover" />
     </div>
   </div>
@@ -647,6 +663,31 @@
 </footer>
 
 <script>
+  // Mobile menu toggle
+  (function () {
+    const btn = document.getElementById('menu-toggle');
+    const panel = document.getElementById('mobile-menu');
+    const iconOpen = document.getElementById('menu-icon-open');
+    const iconClose = document.getElementById('menu-icon-close');
+    if (!btn || !panel) return;
+    const setOpen = (open) => {
+      panel.classList.toggle('hidden', !open);
+      iconOpen.classList.toggle('hidden', open);
+      iconClose.classList.toggle('hidden', !open);
+      btn.setAttribute('aria-expanded', String(open));
+      btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      document.body.style.overflow = open ? 'hidden' : '';
+    };
+    btn.addEventListener('click', () => {
+      setOpen(panel.classList.contains('hidden'));
+    });
+    panel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+    // Reset on resize back to desktop
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 1024) setOpen(false);
+    });
+  })();
+
   // Header shadow on scroll
   (function () {
     const header = document.getElementById('site-header');
